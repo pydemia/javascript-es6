@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="style.css">
+<html>
+
+    </body>
+        <h1>Title</h1>
+
+        <button type="button"
+        onclick="updateBoard()">
+        Click me to display Date and Time.</button>
+        </br>
+
+        <p id="datetime-banner">DateTime board: null</p>
+
+        <form action="" id="loginForm">
+            <h1>Login</h1>
+            <input type="text" id="username" class="form-control" placeholder="Enter your username...">
+            <input type="password" id="password" class="form-control" placeholder="Enter your password...">
+            <button id="submitButton" type="submit">Submit</button>
+        </form>
+
+    </body>
+
+    <script>
+
+        let loginForm = document.getElementById("loginForm");
+
+        const username_value = "";
+        const password_value = "";
+
+        let datenow = new Date();
+
+        // loginForm.addEventListener("submit", (e) => {
+        let submitButton = document.getElementById("submitButton");
+        submitButton.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            let username = document.getElementById("username");
+            let password = document.getElementById("password");
+
+            if (username.value == "" || password.value == "") {
+                alert("Ensure you input a value in both fields!");
+            } else {
+                // perform operation with form input
+                alert("This form has been successfully submitted!");
+                console.log(
+                `This form has a username of ${username.value} and password of ${password.value}`
+                );
+
+                username.value = "";
+                password.value = "";
+            }
+            username_value = username.value;
+            password_value = password.value;
+        });
+
+        var content = `Hi, ${username.value}. Now is: ${datenow.toLocaleString()}`;
+
+        function updateBoard() {
+            datenow = new Date();
+            let datetime_banner = document.getElementById("datetime-banner");
+            var content = `Hi, ${username_value}. Now is: ${datenow.toLocaleString()}`;
+            datetime_banner.innerHTML = `${content}`;
+        }
+    </script>
+
+</html> 
